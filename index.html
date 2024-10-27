@@ -141,12 +141,105 @@
             <a href="#faq">FAQ</a>
             <a href="#resources">Resources</a>
           </div>
-          <a
-            href="https://nonkyc.io/market/LKY_USDT"
-            target="_blank"
-            class="button mb-2 sm:mb-0 external-link"
-            >Buy</a
-          >
+          <div class="relative inline-block" id="buyDropdown">
+            <button
+              onclick="toggleDropdown()"
+              class="button mb-2 sm:mb-0"
+              style="display: flex; align-items: center; gap: 4px"
+            >
+              Buy
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+
+            <div
+              id="dropdownMenu"
+              class="absolute right-0 mt-1 hidden"
+              style="
+                background: white;
+                border: 1px solid #9baebf;
+                border-radius: 4px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                width: 140px;
+                z-index: 50;
+              "
+            >
+              <a
+                href="https://ascendex.com/en/cashtrade-spottrading/usdt/lky"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block px-4 py-2 text-sm hover-bg-gray"
+                style="
+                  color: #476c8e;
+                  text-decoration: none;
+                  border-bottom: 1px solid #9baebf;
+                  display: block;
+                  padding: 8px 16px;
+                "
+              >
+                AscendEX ↗️
+              </a>
+              <a
+                href="https://nonkyc.io/market/LKY_USDT"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block px-4 py-2 text-sm hover-bg-gray"
+                style="
+                  color: #476c8e;
+                  text-decoration: none;
+                  display: block;
+                  padding: 8px 16px;
+                "
+              >
+                NonKYC ↗️
+              </a>
+            </div>
+          </div>
+
+          <style>
+            .hover-bg-gray:hover {
+              background-color: #f6f6f6;
+            }
+
+            #dropdownMenu.show {
+              display: block;
+            }
+          </style>
+
+          <script>
+            function toggleDropdown() {
+              const dropdownMenu = document.getElementById("dropdownMenu");
+              dropdownMenu.classList.toggle("show");
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function (event) {
+              const dropdown = document.getElementById("buyDropdown");
+              const dropdownMenu = document.getElementById("dropdownMenu");
+
+              if (!dropdown.contains(event.target)) {
+                dropdownMenu.classList.remove("show");
+              }
+            });
+
+            // Prevent dropdown from closing when clicking inside
+            document
+              .getElementById("dropdownMenu")
+              .addEventListener("click", function (event) {
+                event.stopPropagation();
+              });
+          </script>
         </nav>
       </div>
     </header>
